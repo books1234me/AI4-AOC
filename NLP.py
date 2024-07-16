@@ -3,6 +3,7 @@ import spacy
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.cluster import KMeans
 import os
+os.environ['GROQ_API_KEY'] = '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'
 from groq import Groq
 
 # Initialize Groq client with API key from environment variables
@@ -89,3 +90,9 @@ integrated_requirements = integrated_requirements[:10]
 # Print integrated requirements
 integrated_requirements_str = "\n".join(integrated_requirements)
 print("\nIntegrated Requirements:\n", integrated_requirements_str)
+
+# Save integrated requirements to a CSV file
+output_df = pd.DataFrame(integrated_requirements, columns=['integrated_requirement'])
+output_df.to_csv('integrated_requirements.csv', index=False)
+
+print("\nIntegrated requirements have been saved to 'integrated_requirements.csv'")
